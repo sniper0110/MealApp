@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MealPreparationScreen extends StatelessWidget {
-
   static const routeName = '/meal_preparation_screen';
 
-  Widget buildListContainer(List<String> my_list_of_items, String list_name){
+  Widget buildListContainer(List<String> my_list_of_items, String list_name) {
     return Container(
       child: Column(
         children: <Widget>[
@@ -12,6 +12,9 @@ class MealPreparationScreen extends StatelessWidget {
             child: Text(
               list_name,
               textAlign: TextAlign.center,
+              style: GoogleFonts.greatVibes(
+                fontSize: 20,
+              ),
             ),
             margin: EdgeInsets.symmetric(
               vertical: 15,
@@ -19,14 +22,28 @@ class MealPreparationScreen extends StatelessWidget {
           ),
           Center(
             child: Container(
-              height: 110,
-              width: 150,
+              height: 200,
+              width: 300,
               child: ListView.builder(
                 itemCount: my_list_of_items.length,
                 itemBuilder: (ctx, index) {
-                  return Text(
-                    my_list_of_items[index],
-                    textAlign: TextAlign.center,
+                  return ListTile(
+                    leading: CircleAvatar(
+                      child: Text(
+                        "# ${index + 1}",
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                          fontSize: 12,
+                        ),
+                      ),
+                      radius: 17,
+                    ),
+                    title: Text(
+                      my_list_of_items[index],
+                      style: GoogleFonts.greatVibes(
+                        fontSize: 20,
+                      ),
+                    ),
                   );
                 },
               ),
@@ -57,13 +74,15 @@ class MealPreparationScreen extends StatelessWidget {
             arguments["meal_title"],
           ),
         ),
-        body: Container(
-          child: Column(
-            children: <Widget>[
-              Image.network(arguments["image_url"]),
-              buildListContainer(ingredients, "Ingredients"),
-              buildListContainer(steps, "Steps"),
-            ],
+        body: SingleChildScrollView(
+          child: Container(
+            child: Column(
+              children: <Widget>[
+                Image.network(arguments["image_url"]),
+                buildListContainer(ingredients, "Ingredients"),
+                buildListContainer(steps, "Steps"),
+              ],
+            ),
           ),
         ));
   }
