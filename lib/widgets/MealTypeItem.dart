@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../models/MealType.dart';
+import 'MealTypeDescriptionScreen.dart';
 
 
 class MealTypeItem extends StatelessWidget {
@@ -10,7 +11,7 @@ class MealTypeItem extends StatelessWidget {
 
   void goToDescription(BuildContext context) {
     Navigator.of(context).pushNamed(
-      '/meal_type_description',
+      MealTypeDescriptionScreen.routeName,
       arguments: {
         'id':meal_type.id,
         'title': meal_type.meal_name,

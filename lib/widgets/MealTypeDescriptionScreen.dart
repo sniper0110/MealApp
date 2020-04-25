@@ -5,6 +5,9 @@ import '../widgets/MealDescriptionItem.dart';
 import '../dummy-data.dart';
 
 class MealTypeDescriptionScreen extends StatelessWidget {
+
+  static const routeName = '/meal_type_description';
+
   List<Meal> find_meals_by_category(id) {
     return DUMMY_MEALS.where((item) {
       return item.categories.contains(id);
