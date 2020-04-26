@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import './widgets/MealTypesScreen.dart';
 import './widgets/MealTypeDescriptionScreen.dart';
 import './widgets/MealPreparationScreen.dart';
+import './widgets/TabsScreen.dart';
 
 void main() => runApp(MyApp());
 
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/': (_) => MealTypesScreen(),
+        '/': (_) => TabsScreen(),
         MealTypeDescriptionScreen.routeName : (_) => MealTypeDescriptionScreen(),
         MealPreparationScreen.routeName : (_) => MealPreparationScreen(),
       },
