@@ -5,6 +5,7 @@ import '../dummy-data.dart';
 import 'MealTypeItem.dart';
 
 class MealTypesScreen extends StatelessWidget {
+
   List<MealType> meals_types = DUMMY_CATEGORIES;
 
   @override

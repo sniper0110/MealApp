@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'MealTypesScreen.dart';
 import 'FavoritesScreen.dart';
+import 'MyCustomDrawer.dart';
+
 
 class TabsScreen extends StatefulWidget {
   @override
@@ -54,6 +56,7 @@ class _TabsScreenState extends State<TabsScreen> {
           ),
         ],
       ),
+      drawer: MyCustomDrawer(),
     );
   }
 }
