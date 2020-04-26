@@ -16,8 +16,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.orange,
         secondaryHeaderColor: Colors.deepOrangeAccent.shade100,
       ),
-      home: MealTypesScreen(),
+      initialRoute: '/',
       routes: {
+        '/': (_) => MealTypesScreen(),
         MealTypeDescriptionScreen.routeName : (_) => MealTypeDescriptionScreen(),
         MealPreparationScreen.routeName : (_) => MealPreparationScreen(),
       },
