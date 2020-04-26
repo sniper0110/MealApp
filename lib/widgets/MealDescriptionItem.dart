@@ -2,13 +2,19 @@ import 'package:flutter/material.dart';
 import '../models/MealDescription.dart';
 import 'MealPreparationScreen.dart';
 
-class MealDescriptionItem extends StatelessWidget {
+class MealDescriptionItem extends StatefulWidget {
   final Meal meal_to_display;
+  final Function remove_meal;
 
-  MealDescriptionItem({this.meal_to_display});
+  MealDescriptionItem({this.meal_to_display, this.remove_meal});
 
+  @override
+  _MealDescriptionItemState createState() => _MealDescriptionItemState();
+}
+
+class _MealDescriptionItemState extends State<MealDescriptionItem> {
   String get complexity_text {
-    switch (meal_to_display.complexity) {
+    switch (widget.meal_to_display.complexity) {
       case Complexity.SIMPLE:
         return "Simple";
 
@@ -27,12 +33,18 @@ class MealDescriptionItem extends StatelessWidget {
     Navigator.of(context).pushNamed(
       MealPreparationScreen.routeName,
       arguments: {
-        "meal_title":meal_to_display.title,
-        "image_url":meal_to_display.image_url,
-        "ingredients":meal_to_display.ingredients,
-        "steps":meal_to_display.steps,
+        "id":widget.meal_to_display.id,
+        "meal_title":widget.meal_to_display.title,
+        "image_url":widget.meal_to_display.image_url,
+        "ingredients":widget.meal_to_display.ingredients,
+        "steps":widget.meal_to_display.steps,
       },
-    );
+    ).then((result){
+      print(result);
+      if(result != null){
+        widget.remove_meal(result);
+      }
+    });
   }
 
   @override
@@ -56,14 +68,14 @@ class MealDescriptionItem extends StatelessWidget {
                 child: Stack(
                   children: <Widget>[
                     Image.network(
-                      meal_to_display.image_url,
+                      widget.meal_to_display.image_url,
                     ),
                     Positioned(
                       bottom: 10,
                       right: 10,
                       width: 150,
                       child: Text(
-                        meal_to_display.title,
+                        widget.meal_to_display.title,
                         style: TextStyle(
                           backgroundColor: Colors.black54,
                           color: Colors.white70,
@@ -91,7 +103,7 @@ class MealDescriptionItem extends StatelessWidget {
                           width: 5,
                         ),
                         Text(
-                          "${meal_to_display.duration} min",
+                          "${widget.meal_to_display.duration} min",
                         ),
                       ],
                     ),

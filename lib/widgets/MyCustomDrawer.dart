@@ -36,7 +36,7 @@ class MyCustomDrawer extends StatelessWidget {
               ),
             ),
             onTap: () {
-              Navigator.of(context).pushNamed('/');
+              Navigator.of(context).pushReplacementNamed('/');
             },
           ),
           ListTile(
@@ -52,7 +52,7 @@ class MyCustomDrawer extends StatelessWidget {
               ),
             ),
             onTap: () {
-              Navigator.of(context).pushNamed(SettingsScreen.routeName);
+              Navigator.of(context).pushReplacementNamed(SettingsScreen.routeName);
             },
           ),
         ],

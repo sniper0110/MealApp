@@ -60,6 +60,10 @@ class MealPreparationScreen extends StatelessWidget {
     );
   }
 
+  void _delete_recipe(BuildContext context, mealId) {
+    Navigator.of(context).pop(mealId);
+  }
+
   @override
   Widget build(BuildContext context) {
     final arguments =
@@ -67,23 +71,31 @@ class MealPreparationScreen extends StatelessWidget {
 
     List<String> ingredients = arguments['ingredients'];
     List<String> steps = arguments['steps'];
+    String mealId = arguments['id'];
 
     return Scaffold(
-        appBar: AppBar(
-          title: Text(
-            arguments["meal_title"],
+      appBar: AppBar(
+        title: Text(
+          arguments["meal_title"],
+        ),
+      ),
+      body: SingleChildScrollView(
+        child: Container(
+          child: Column(
+            children: <Widget>[
+              Image.network(arguments["image_url"]),
+              buildListContainer(ingredients, "Ingredients"),
+              buildListContainer(steps, "Steps"),
+            ],
           ),
         ),
-        body: SingleChildScrollView(
-          child: Container(
-            child: Column(
-              children: <Widget>[
-                Image.network(arguments["image_url"]),
-                buildListContainer(ingredients, "Ingredients"),
-                buildListContainer(steps, "Steps"),
-              ],
-            ),
-          ),
-        ));
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          _delete_recipe(context, mealId);
+        },
+        child: Icon(Icons.delete),
+      ),
+    );
   }
 }

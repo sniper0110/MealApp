@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'MyCustomDrawer.dart';
 
 class SettingsScreen extends StatelessWidget {
 
@@ -14,6 +15,7 @@ class SettingsScreen extends StatelessWidget {
         child: Text("This is the settings screen!"),
         alignment: AlignmentDirectional.center,
       ),
+      drawer: MyCustomDrawer(),
     );
   }
 }
